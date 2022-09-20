@@ -18,18 +18,20 @@ import java.util.List;
 
 public class Category {
 
+    //Declaring variables of Category
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int CategoryId;
-    private String CategoryName;
-    private String CategoryDescription;
-    private boolean Active;
-    private boolean Deleted;
+    private int categoryId;
+    private String categoryName;
+    private String categoryDescription;
+    private boolean active;
+    private boolean deleted;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate CreateDate= LocalDate.now();
+    private LocalDate createDate= LocalDate.now();
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate UpdateDate= LocalDate.now();
+    private LocalDate updateDate= LocalDate.now();
 
     @OneToMany(targetEntity = Products.class,cascade = CascadeType.ALL)
     @JoinColumn(name="c_fk",referencedColumnName = "CategoryId")

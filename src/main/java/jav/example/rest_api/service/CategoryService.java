@@ -6,13 +6,13 @@ import jav.example.rest_api.entity.Category;
 import java.util.List;
 
 public interface CategoryService {
-    List<Category> GetCategoryList();
+    List<Category> getCategoryList();
 
-    public void updateCategory(Integer id,Category category);
+     void updateCategory(Integer id,Category category);
 
-    Category GetCategoryId(Integer id);
+    Category getCategoryId(Integer id);
 
-    public void DeleteCategory(Integer id);
+     void deleteCategory(Integer id);
 
     Category addCategory(Category category);
 

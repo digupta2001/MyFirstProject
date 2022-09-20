@@ -8,7 +8,7 @@ public interface ProductService {
 
     List<Products> getProductAll();
 
-    public void Del(Integer id);
+     void del(Integer id);
 
 
 }

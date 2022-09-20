@@ -15,5 +15,5 @@ public interface ProductRepository extends JpaRepository<Products,Integer> {
 
     @Modifying
     @Transactional
-    public void DeleteProduct(@Param("productid") Integer productid);
+     void deleteProduct(@Param("productid") Integer productid);
 }

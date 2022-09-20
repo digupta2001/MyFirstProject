@@ -17,17 +17,22 @@ import java.util.NoSuchElementException;
 
 @RestController
 @Slf4j
-public class ProductController {
+public final class ProductController {
 
     @Autowired
     private ProductService productService;
 
+
+    //basic get function trial
     @GetMapping("/homeProd")
     public String homeProd()
     {
+
         return "hello products";
     }
 
+
+    //fetching all details of products
     @GetMapping("getProdAll")
     public ResponseEntity<List<Products>>getProductAll()
     {
@@ -36,8 +41,10 @@ public class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
+    //deleting product info by id
+
     @DeleteMapping("deleteById{id}")
-    public ResponseEntity<Products> Del(@PathVariable("id")Integer id){
+    public ResponseEntity<Products> del(@PathVariable("id")Integer id){
         try {
             log.info("product deleted");
             productService.Del(id);

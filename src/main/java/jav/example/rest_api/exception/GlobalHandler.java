@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 
 
 @ControllerAdvice
-public class GlobalHandler extends ResponseEntityExceptionHandler {
+public final class GlobalHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<Object> handleResourceNotFoundException(ResourceNotFoundException ex, WebRequest request){

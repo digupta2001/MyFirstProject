@@ -20,20 +20,22 @@ import java.time.LocalDate;
 
 public class Products {
 
+    //Declaring product varaiables
+
     @Id
-    private int ProductId;
-    private int CategoryId;
-    private String ProductName;
-    private String ProductDescription;
+    private int productId;
+    private int categoryId;
+    private String productName;
+    private String productDescription;
     private int price;
-    private boolean Active;
-    private boolean Deleted;
+    private boolean active;
+    private boolean deleted;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate CreateDate= LocalDate.now();
+    private LocalDate createDate= LocalDate.now();
 
     @JsonFormat(pattern = "yyyy-MM-dd")
-    private LocalDate UpdateDate= LocalDate.now();
+    private LocalDate updateDate= LocalDate.now();
 
 
 }

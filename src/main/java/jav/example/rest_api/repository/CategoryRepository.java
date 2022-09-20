@@ -14,7 +14,7 @@ public interface CategoryRepository extends JpaRepository<Category,Integer> {
     @Transactional
     @Modifying
 
-    public void DeleteCategory(@Param("categoryid") Integer categoryid);
+     void deleteCategory(@Param("categoryid") Integer categoryid);
 
 
 
