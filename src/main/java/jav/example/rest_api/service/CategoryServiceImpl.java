@@ -15,7 +15,7 @@ public final class CategoryServiceImpl implements CategoryService {
     private CategoryRepository categoryRepository;
 
     @Override
-    public List<Category> GetCategoryList(){
+    public List<Category> getCategoryList(){
         return categoryRepository.findAll();
     }
 
@@ -33,12 +33,12 @@ public final class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public Category GetCategoryId(Integer categoryid){
+    public Category getCategoryId(Integer categoryid){
         return categoryRepository.findById(categoryid).get();
     }
 
     @Override
-    public void DeleteCategory(Integer categoryid){
-        categoryRepository.DeleteCategory(categoryid);
+    public void deleteCategory(Integer categoryid){
+        categoryRepository.deleteCategory(categoryid);
     }
 }

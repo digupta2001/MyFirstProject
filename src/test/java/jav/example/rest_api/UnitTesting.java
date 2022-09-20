@@ -33,9 +33,9 @@ public class UnitTesting
         mycat.add(new Category(1,"cat 1","cat1is",true,false,null,null,null));
         mycat.add(new Category(2,"cat 2","cat2is",true,false,null,null,null));
         when(catego.findAll()).thenReturn(mycat);
-        categoService.GetCategoryList();
+        categoService.getCategoryList();
 
-        assertEquals(2,categoService.GetCategoryList().size());
+        assertEquals(2,categoService.getCategoryList().size());
     }
 
     @Test

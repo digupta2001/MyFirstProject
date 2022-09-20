@@ -20,8 +20,8 @@ public final class ProductServiceImpl implements ProductService
     }
 
     @Override
-    public void Del(Integer id){
-        productRepository.DeleteProduct(id);
+    public void del(Integer id){
+        productRepository.deleteProduct(id);
     }
 
 

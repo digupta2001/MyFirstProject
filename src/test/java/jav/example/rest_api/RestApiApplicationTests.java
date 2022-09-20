@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 @SpringBootTest
-class RestApiApplicationTests {
+public class RestApiApplicationTests {
 
 	@Test
 	void contextLoads() {

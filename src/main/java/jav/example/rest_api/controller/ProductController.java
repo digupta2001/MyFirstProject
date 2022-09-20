@@ -17,7 +17,7 @@ import java.util.NoSuchElementException;
 
 @RestController
 @Slf4j
-public final class ProductController {
+public final  class ProductController {
 
     @Autowired
     private ProductService productService;
@@ -47,7 +47,7 @@ public final class ProductController {
     public ResponseEntity<Products> del(@PathVariable("id")Integer id){
         try {
             log.info("product deleted");
-            productService.Del(id);
+            productService.del(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         catch (NoSuchElementException ef){
