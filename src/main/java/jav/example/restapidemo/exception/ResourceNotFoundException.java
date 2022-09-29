@@ -1,4 +1,4 @@
-package jav.example.rest_api.exception;
+package jav.example.restapidemo.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

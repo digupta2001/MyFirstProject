@@ -1,8 +1,8 @@
-package jav.example.rest_api.controller;
+package jav.example.restapidemo.controller;
 
 
-import jav.example.rest_api.entity.Products;
-import jav.example.rest_api.service.ProductService;
+import jav.example.restapidemo.entity.Products;
+import jav.example.restapidemo.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,16 +23,9 @@ public final  class ProductController {
     private ProductService productService;
 
 
-    //basic get function trial
-    @GetMapping("/homeProd")
-    public String homeProd()
-    {
-
-        return "hello products";
-    }
 
 
-    //fetching all details of products
+
     @GetMapping("getProdAll")
     public ResponseEntity<List<Products>>getProductAll()
     {
@@ -41,13 +34,13 @@ public final  class ProductController {
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
-    //deleting product info by id
 
-    @DeleteMapping("deleteById{id}")
-    public ResponseEntity<Products> del(@PathVariable("id")Integer id){
+
+    @DeleteMapping("deleteById/{id}")
+    public ResponseEntity<Products> delproduct(@PathVariable("id")Integer id){
         try {
             log.info("product deleted");
-            productService.del(id);
+            productService.delproduct(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         catch (NoSuchElementException ef){

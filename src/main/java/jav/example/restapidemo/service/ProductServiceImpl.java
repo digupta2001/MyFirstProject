@@ -1,8 +1,8 @@
-package jav.example.rest_api.service;
+package jav.example.restapidemo.service;
 
 
-import jav.example.rest_api.entity.Products;
-import jav.example.rest_api.repository.ProductRepository;
+import jav.example.restapidemo.entity.Products;
+import jav.example.restapidemo.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +20,7 @@ public final class ProductServiceImpl implements ProductService
     }
 
     @Override
-    public void del(Integer id){
+    public void delproduct(Integer id){
         productRepository.deleteProduct(id);
     }
 

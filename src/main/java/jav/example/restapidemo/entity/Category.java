@@ -1,7 +1,9 @@
-package jav.example.rest_api.entity;
+package jav.example.restapidemo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -28,13 +30,14 @@ public class Category {
     private boolean active;
     private boolean deleted;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @CreationTimestamp
+    @Column(updatable = false)
     private LocalDate createDate= LocalDate.now();
-    @JsonFormat(pattern = "yyyy-MM-dd")
+   @UpdateTimestamp
     private LocalDate updateDate= LocalDate.now();
 
-    @OneToMany(targetEntity = Products.class,cascade = CascadeType.ALL)
-    @JoinColumn(name="c_fk",referencedColumnName = "CategoryId")
-    private List<Products> products;
+   @OneToMany(targetEntity = Products.class,cascade = CascadeType.ALL)
+   @JoinColumn(name="foreignkey",referencedColumnName = "CategoryId")
+   private List<Products> products;
 
 }

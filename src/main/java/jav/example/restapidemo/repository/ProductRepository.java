@@ -1,6 +1,6 @@
-package jav.example.rest_api.repository;
+package jav.example.restapidemo.repository;
 
-import jav.example.rest_api.entity.Products;
+import jav.example.restapidemo.entity.Products;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

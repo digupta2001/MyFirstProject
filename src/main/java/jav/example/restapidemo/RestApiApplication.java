@@ -1,4 +1,4 @@
-package jav.example.rest_api;
+package jav.example.restapidemo;
 
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;

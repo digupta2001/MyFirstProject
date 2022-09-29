@@ -1,8 +1,8 @@
-package jav.example.rest_api.service;
+package jav.example.restapidemo.service;
 
 
-import jav.example.rest_api.entity.Category;
-import jav.example.rest_api.repository.CategoryRepository;
+import jav.example.restapidemo.entity.Category;
+import jav.example.restapidemo.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

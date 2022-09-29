@@ -1,8 +1,8 @@
-package jav.example.rest_api.controller;
+package jav.example.restapidemo.controller;
 
 
-import jav.example.rest_api.entity.Category;
-import jav.example.rest_api.service.CategoryService;
+import jav.example.restapidemo.entity.Category;
+import jav.example.restapidemo.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,25 +20,20 @@ public final class  CategoryController {
     private CategoryService categoryService;
 
 
-    //trying to work for get task
-    @GetMapping("home")
-    public String home()
-    {
-        return" hi POSTMAN working";
-    }
 
 
-    //fetching all category info
     @GetMapping("getall")
     public ResponseEntity<List<Category>> getCategoryList(){
+        log.info("category list fetching begins");
         List<Category> categoryList=categoryService.getCategoryList();
         return new ResponseEntity<>(categoryList, HttpStatus.OK);
     }
 
 
-    //fetching category by id
-    @GetMapping("categoryby{id}")
+
+    @GetMapping("categorybyid/{id}")
     public ResponseEntity<Category>getCategoryById(@PathVariable Integer id){
+        log.info("category by id begins");
         try {
             Category category=this.categoryService.getCategoryId(id);
             return new ResponseEntity<Category>(category,HttpStatus.OK);
@@ -49,24 +44,32 @@ public final class  CategoryController {
     }
 
 
-    //posting data in category table
+
     @PostMapping("create")
     public ResponseEntity<Category> addCategory(@RequestBody Category category){
+        log.info("adding new info ");
         Category category1=categoryService.addCategory(category);
         return new ResponseEntity<>(category1,HttpStatus.CREATED);
     }
 
-    //deleting operation by category id
 
-    @DeleteMapping("deleteby{id}")
+
+    @DeleteMapping("deletebyid/{id}")
     public ResponseEntity<Category> deleteCategory(@PathVariable("id")Integer id){
-        categoryService.deleteCategory(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        try {
+            log.info("category deleted");
+            categoryService.deleteCategory(id);
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        catch (NoSuchElementException ef){
+            log.error("no category found");
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
     }
 
 
-    //updating new info in table
-    @PutMapping("update{categoryId}")
+
+    @PutMapping("update/{categoryId}")
     public ResponseEntity<Category>updateCategory(@PathVariable("categoryId")Integer categoryId,@RequestBody Category category){
         categoryService.updateCategory(categoryId,category);
         return new ResponseEntity<>(categoryService.getCategoryId(categoryId),HttpStatus.OK);

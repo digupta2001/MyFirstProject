@@ -1,7 +1,7 @@
-package jav.example.rest_api.service;
+package jav.example.restapidemo.service;
 
 
-import jav.example.rest_api.entity.Category;
+import jav.example.restapidemo.entity.Category;
 
 import java.util.List;
 

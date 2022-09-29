@@ -1,4 +1,4 @@
-package jav.example.rest_api.exception;
+package jav.example.restapidemo.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

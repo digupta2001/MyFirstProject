@@ -1,17 +1,17 @@
-package jav.example.rest_api.entity;
+package jav.example.restapidemo.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+//@Getter
+//@Setter
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Data
 @Entity
 @ToString
@@ -23,19 +23,23 @@ public class Products {
     //Declaring product varaiables
 
     @Id
-    private int productId;
-    private int categoryId;
+    public int productId;
     private String productName;
     private String productDescription;
     private int price;
     private boolean active;
     private boolean deleted;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @CreationTimestamp
+    @Column(updatable = false)
     private LocalDate createDate= LocalDate.now();
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
+    @UpdateTimestamp
     private LocalDate updateDate= LocalDate.now();
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+     Category category;
 
 
 }
