@@ -68,7 +68,7 @@ public class ProductControllerTest
     @Test
     public void test_deleteProduct() throws Exception {
         int productId=1;
-        productService.delproduct(productId);
+        productService.deleteproduct(productId);
         this.mockMvc
                 .perform(delete("/product/{id}",1))
                 .andExpect(status().isOk())

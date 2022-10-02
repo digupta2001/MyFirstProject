@@ -20,7 +20,7 @@ public final class ProductServiceImpl implements ProductService
     }
 
     @Override
-    public void delproduct(Integer id){
+    public void deleteproduct(Integer id){
         productRepository.deleteProduct(id);
     }
 

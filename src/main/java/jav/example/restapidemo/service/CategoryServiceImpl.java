@@ -24,7 +24,7 @@ public final class CategoryServiceImpl implements CategoryService {
         Category updateCategory=categoryRepository.findById(id).get();
         updateCategory.setCategoryName(category.getCategoryName());
         updateCategory.setCategoryDescription(category.getCategoryDescription());
-        updateCategory.setProducts(category.getProducts());
+        updateCategory.setCategoryId(category.getCategoryId());
     }
 
     @Override

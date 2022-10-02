@@ -27,17 +27,15 @@ public class Category {
     private int categoryId;
     private String categoryName;
     private String categoryDescription;
-    private boolean active;
-    private boolean deleted;
+    private boolean active=Boolean.TRUE;
+    private boolean deleted=Boolean.FALSE;
 
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDate createDate= LocalDate.now();
-   @UpdateTimestamp
+    @UpdateTimestamp
     private LocalDate updateDate= LocalDate.now();
 
-   @OneToMany(targetEntity = Products.class,cascade = CascadeType.ALL)
-   @JoinColumn(name="foreignkey",referencedColumnName = "CategoryId")
-   private List<Products> products;
+
 
 }

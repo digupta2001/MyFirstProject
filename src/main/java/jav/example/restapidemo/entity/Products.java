@@ -24,11 +24,12 @@ public class Products {
 
     @Id
     public int productId;
+    //private int categoryId;
     private String productName;
     private String productDescription;
     private int price;
-    private boolean active;
-    private boolean deleted;
+    private boolean active=Boolean.TRUE;
+    private boolean deleted=Boolean.FALSE;
 
     @CreationTimestamp
     @Column(updatable = false)
@@ -39,7 +40,7 @@ public class Products {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
-     Category category;
+    private Category category;
 
 
 }

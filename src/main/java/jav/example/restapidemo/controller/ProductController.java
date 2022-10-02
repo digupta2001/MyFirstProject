@@ -37,10 +37,10 @@ public final  class ProductController {
 
 
     @DeleteMapping("deleteById/{id}")
-    public ResponseEntity<Products> delproduct(@PathVariable("id")Integer id){
+    public ResponseEntity<Products> deleteproduct(@PathVariable("id")Integer id){
         try {
             log.info("product deleted");
-            productService.delproduct(id);
+            productService.deleteproduct(id);
             return new ResponseEntity<>(HttpStatus.OK);
         }
         catch (NoSuchElementException ef){

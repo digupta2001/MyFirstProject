@@ -39,7 +39,7 @@ public class CategoryServiceTest
                 true,
                 false,
                 null,
-                null,null
+                null
         ));
         myCategory.add(new Category(2,
                 "category2",
@@ -47,7 +47,7 @@ public class CategoryServiceTest
                 true,
                 false,
                 null,
-                null,null
+                null
     ));
         when(categoryRepository.findAll()).thenReturn(myCategory);
         categoryService.getCategoryList();
@@ -74,7 +74,7 @@ public class CategoryServiceTest
                 true,
                 false,
                 null,
-                null,null);
+                null);
         when(categoryRepository.findById(1)).thenReturn(Optional.of(category));
         assertEquals("category1",this.categoryService.getCategoryId(1).getCategoryName());
         assertEquals("description",this.categoryService.getCategoryId(1).getCategoryDescription());
@@ -102,7 +102,7 @@ public class CategoryServiceTest
                 true,
                 false,
                 null,
-                null,null);
+                null);
         when(categoryRepository.save(category)).thenReturn(category);
         categoryService.addCategory(category);
         assertEquals(category,categoryService.addCategory(category));
@@ -117,7 +117,7 @@ public class CategoryServiceTest
                 true,
                 false,
                 null,
-                null,null));
+                null));
         int CategoryId =1;
         categoryRepository.deleteCategory(CategoryId);
         when(categoryRepository.findAll()).thenReturn(myCategory);

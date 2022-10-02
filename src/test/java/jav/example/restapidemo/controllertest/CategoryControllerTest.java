@@ -75,7 +75,7 @@ public class CategoryControllerTest
     void testgetCategoryId() throws Exception
     {
         Integer categoryId=1;
-        Category category1=new Category(1,"name","description",false,false,null,null,null);
+        Category category1=new Category(1,"name","description",false,false,null,null);
         when(this.categoryService.getCategoryId(categoryId)).thenReturn(category1);
                 this.mockMvc.perform( get("/category/{id}",categoryId))
                         .andExpect(MockMvcResultMatchers.jsonPath(".categoryId").value(1))
@@ -103,7 +103,7 @@ public class CategoryControllerTest
                 true,
                 false,
                 null,
-                null,null);
+                null);
 
         when(categoryService.addCategory(category)).thenReturn(category);
         ObjectMapper mapper = new ObjectMapper();
