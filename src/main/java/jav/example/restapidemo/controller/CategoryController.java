@@ -20,9 +20,11 @@ public final class  CategoryController {
     private CategoryService categoryService;
 
 
-
-
-    @GetMapping("getall")
+    /**
+     * fetching category list
+     * @return
+     */
+    @GetMapping("getAll")
     public ResponseEntity<List<Category>> getCategoryList(){
         log.info("category list fetching begins");
         List<Category> categoryList=categoryService.getCategoryList();
@@ -30,9 +32,13 @@ public final class  CategoryController {
     }
 
 
-
-    @GetMapping("categorybyid/{id}")
-    public ResponseEntity<Category>getCategoryById(@PathVariable Integer id){
+    /**
+     * fetching category by id
+     * @param id
+     * @return
+     */
+    @GetMapping("categoryById/{id}")
+    public ResponseEntity<Category>getCategoryById(final @PathVariable Integer id){
         log.info("category by id begins");
         try {
             Category category=this.categoryService.getCategoryId(id);
@@ -44,22 +50,30 @@ public final class  CategoryController {
     }
 
 
-
+    /**
+     * adding new category
+     * @param category
+     * @return
+     */
     @PostMapping("create")
-    public ResponseEntity<Category> addCategory(@RequestBody Category category){
+    public ResponseEntity<Category> addCategory(final @RequestBody Category category){
         log.info("adding new info ");
         Category category1=categoryService.addCategory(category);
         return new ResponseEntity<>(category1,HttpStatus.CREATED);
     }
 
 
-
+    /**
+     * Deleting category by id
+     * @param id
+     * @return
+     */
     @DeleteMapping("deletebyid/{id}")
-    public ResponseEntity<Category> deleteCategory(@PathVariable("id")Integer id){
+    public ResponseEntity<Category> deleteCategory(final @PathVariable("id")Integer id){
         try {
             log.info("category deleted");
             categoryService.deleteCategory(id);
-            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         catch (NoSuchElementException ef){
             log.error("no category found");
@@ -68,7 +82,12 @@ public final class  CategoryController {
     }
 
 
-
+    /**
+     * updating category by id
+     * @param categoryId
+     * @param category
+     * @return
+     */
     @PutMapping("update/{categoryId}")
     public ResponseEntity<Category>updateCategory(@PathVariable("categoryId")Integer categoryId,@RequestBody Category category){
         categoryService.updateCategory(categoryId,category);

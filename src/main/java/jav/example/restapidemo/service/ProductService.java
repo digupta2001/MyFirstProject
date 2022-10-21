@@ -8,7 +8,13 @@ public interface ProductService {
 
     List<Products> getProductAll();
 
-     void deleteproduct(Integer id);
+    Products updateProduct(Integer id,Products products);
+
+    Products getProductById(Integer id);
+
+    void deleteproduct(Integer productId);
+
+
 
 
 }

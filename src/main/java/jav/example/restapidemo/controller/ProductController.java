@@ -7,11 +7,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.Id;
+import javax.validation.Valid;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -23,31 +22,60 @@ public final  class ProductController {
     private ProductService productService;
 
 
-
-
-
+    /**
+     * fetching all product list
+     * @return
+     */
     @GetMapping("getProdAll")
     public ResponseEntity<List<Products>>getProductAll()
     {
-        log.info("product list ");
+
         List<Products> products=productService.getProductAll();
         return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
 
+    /**
+     * fetching product by id
+     * @param id
+     * @return
+     */
+    @GetMapping("product/{id}")
+    public ResponseEntity<Products> getProductById(@PathVariable Integer id)
+    {
+        Products products = this.productService.getProductById(id);
 
-    @DeleteMapping("deleteById/{id}")
-    public ResponseEntity<Products> deleteproduct(@PathVariable("id")Integer id){
-        try {
-            log.info("product deleted");
-            productService.deleteproduct(id);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
-        catch (NoSuchElementException ef){
-        log.error("error in product");
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-        }
+        return new ResponseEntity<>(products,HttpStatus.OK);
     }
+
+
+    /**
+     * updating produt by id
+     * @param id
+     * @param products
+     * @return
+     */
+    @PutMapping("Uproduct/{id}")
+    public ResponseEntity<Object> updateProduct(@PathVariable("Id") Integer id,@RequestBody Products products)
+    {
+        productService.updateProduct(id,products);
+
+        return new ResponseEntity<>("product successfully updated",HttpStatus.OK);
+    }
+
+
+    /**
+     * deleting product by id
+     * @param id
+     * @return
+     */
+    @DeleteMapping("deleteById/{id}")
+    public ResponseEntity<Products> deleteProduct(@PathVariable("id")Integer id){
+        productService.deleteproduct(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 
 
 

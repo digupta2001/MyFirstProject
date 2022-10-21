@@ -1,7 +1,7 @@
 package jav.example.restapidemo.servicetest;
 
 import jav.example.restapidemo.entity.Category;
-import jav.example.restapidemo.exception.ResourceNotFoundException;
+
 import jav.example.restapidemo.repository.CategoryRepository;
 import jav.example.restapidemo.service.CategoryServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -54,16 +54,6 @@ public class CategoryServiceTest
         assertEquals(2,categoryService.getCategoryList().size());
     }
 
-    @Test
-    void test_getCategoryThrowsResourceNotFoundException() {
-
-        List <Category> myCategory= new ArrayList<>();
-
-        when(categoryRepository.findAll()).thenReturn(myCategory);
-
-        assertThatThrownBy(() -> categoryService.getCategoryList())
-                .isInstanceOf(ResourceNotFoundException.class);
-    }
 
     @Test
     public void test_getCategoryId() {
@@ -78,18 +68,6 @@ public class CategoryServiceTest
         when(categoryRepository.findById(1)).thenReturn(Optional.of(category));
         assertEquals("category1",this.categoryService.getCategoryId(1).getCategoryName());
         assertEquals("description",this.categoryService.getCategoryId(1).getCategoryDescription());
-
-    }
-
-    @Test
-    void test_getCategoryIdThrowsResourceNotFoundException() {
-        Integer id = 1;
-
-        when(categoryRepository.findById(id))
-                .thenReturn(Optional.empty());
-
-        assertThatThrownBy(() -> categoryService.getCategoryId(id))
-                .isInstanceOf(ResourceNotFoundException.class);
 
     }
 
@@ -123,6 +101,16 @@ public class CategoryServiceTest
         when(categoryRepository.findAll()).thenReturn(myCategory);
         assertThat(myCategory).isNotNull();
 
+    }
+
+    @Test
+    void testUpdateCategory()
+    {
+        Category category = new Category(1,"name","caytegorylis",false,false,null,null);
+        when(categoryRepository.findById(any())).thenReturn(Optional.of(category));
+        when(categoryRepository.save(any())).thenReturn(category);
+        Category category1=categoryService.updateCategory(1,category);
+        assertEquals(category.getCategoryName(),category1.getCategoryName());
     }
 
 
